@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Navbar from './Navbar';
+import Hero from './Hero';
+import Features from './Features';
+import Footer from './Footer';
+import Container from '@material-ui/core/Container';
+import { ThemeProvider } from '@material-ui/styles';
+import theme from './Theme';
+import CssBaseline from '@material-ui/core/CssBaseline';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container>
+        <Navbar />
+        <Hero />
+        <Features />
+      </Container>
+    </ThemeProvider>
   );
 }
 
