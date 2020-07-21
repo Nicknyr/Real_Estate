@@ -43,7 +43,7 @@ const theme = createMuiTheme({
         fontWeight: 'bold',
         color: 'rgb(59, 65, 68)',
         margin: '.5rem 0'
-    }
+    },
   },
   overrides: {
     // Style sheet name ⚛️
