@@ -36,11 +36,13 @@ const theme = createMuiTheme({
     },
     h4: {
         fontWeight: 'bold',
-        color: 'rgb(59, 65, 68)'
+        color: 'rgb(59, 65, 68)',
+        margin: '1rem 0'
     },
     h5: {
         fontWeight: 'bold',
-        color: 'rgb(59, 65, 68)'
+        color: 'rgb(59, 65, 68)',
+        margin: '.5rem 0'
     }
   },
   overrides: {

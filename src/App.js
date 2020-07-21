@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import Hero from './Hero';
 import Features from './Features';
+import Explore from './Explore';
 import Footer from './Footer';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider } from '@material-ui/styles';
@@ -17,6 +18,7 @@ function App() {
         <Navbar />
         <Hero />
         <Features />
+        <Explore />
       </Container>
     </ThemeProvider>
   );
