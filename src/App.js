@@ -22,6 +22,7 @@ function App() {
         <Explore />
       </Container>
       <Guides />
+      <Footer />
     </ThemeProvider>
   );
 }
