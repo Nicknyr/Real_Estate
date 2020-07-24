@@ -19,6 +19,7 @@ export default function Features() {
     const classes = useStyles();
     const [houseData, getHouseData] = useState();
 
+    // new API key
     let headers = {
         "method": "GET",
         "headers": {
