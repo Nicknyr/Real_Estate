@@ -15,9 +15,6 @@ const useStyles = makeStyles({
     },
 });
 
-
-// key 1ce2de18c1msh2eee9a4f98cc77dp17846cjsnb1ce2ee50769
-
 export default function Features() {
     const classes = useStyles();
     const [houseData, getHouseData] = useState();
@@ -38,8 +35,6 @@ export default function Features() {
         }
         fetchData();
     }, [])
-
-    //console.log(process.env.REACT_APP_API_KEY);
 
     return (
         <div className={classes.section}>
