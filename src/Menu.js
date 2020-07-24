@@ -73,7 +73,7 @@ export default function MenuDrawer() {
           aria-label="menu"
           className={classes.closeIcon}
           >
-              <CloseIcon/>
+              <CloseIcon />
           </IconButton>
       </Box>
        
@@ -168,9 +168,7 @@ export default function MenuDrawer() {
   return (
     <div>
         <Button onClick={toggleDrawer('right', true)}>
-          <IconButton edge="start" className={classes.menuButton} variant="primary" aria-label="menu">
-              <MenuIcon />
-          </IconButton>
+          <MenuIcon />
         </Button>
         <Drawer anchor={'right'} open={state['right']} onClose={toggleDrawer('right', false)}>
           {list('right')}

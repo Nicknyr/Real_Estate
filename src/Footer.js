@@ -40,7 +40,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.1rem'
   },
   links: {
-    fontSize: '.8rem'
+    fontSize: '.8rem',
+    lineHeight: '1.7'
+  },
+  socialIcons: {
+    paddingLeft: '.3rem'
   }
 }));
 
@@ -50,11 +54,7 @@ export default function Footer() {
 
   return (
     <div className={classes.root}>
-        <Grid 
-            container
-            justify="center"
-            alignItems="flex-end"
-        >
+        <Grid container justify="center" alignItems="flex-end">
           <Grid container xs={12} md={9}>
             <Grid item xs={12} md={3}>
               <Box align="left" p={3}>
@@ -94,27 +94,27 @@ export default function Footer() {
               <Box align="left" p={3}>
                   <Typography variant="h6" className={classes.h6}>Explore</Typography>
                   <Link href="#" onClick={preventDefault} display="block" className={classes.links}>
-                    <Box>
-                      <FacebookIcon />
-                      <span>Facebook</span>
+                    <Box display="flex" alignItems="center">
+                      <FacebookIcon/>
+                      <span className={classes.socialIcons}>Facebook</span>
                     </Box>
                   </Link>
                   <Link href="#" onClick={preventDefault} display="block" className={classes.links}>
-                    <Box>
+                    <Box display="flex" alignItems="center">
                       <InstagramIcon />
-                      <span>Instagram</span>
+                      <span className={classes.socialIcons}>Instagram</span>
                     </Box>
                   </Link>
                   <Link href="#" onClick={preventDefault} display="block" className={classes.links}>
-                    <Box>
+                    <Box display="flex" alignItems="center">
                       <TwitterIcon />
-                      <span>Twitter</span>
+                      <span className={classes.socialIcons}>Twitter</span>
                     </Box>
                   </Link>
                   <Link href="#" onClick={preventDefault} display="block" className={classes.links}>
-                    <Box>
+                    <Box display="flex" alignItems="center">
                       <PinterestIcon />
-                      <span>Pinterest</span>
+                      <span className={classes.socialIcons}>Pinterest</span>
                     </Box>
                   </Link>
               </Box>
