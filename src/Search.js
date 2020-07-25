@@ -19,8 +19,7 @@ export default function Features() {
     const classes = useStyles();
     const [houseData, getHouseData] = useState();
 
-
-    // new API key
+    // Headers for API call
     let headers = {
         "method": "GET",
         "headers": {
@@ -33,33 +32,31 @@ export default function Features() {
         async function fetchData() {
             const data =  await axios.get(`https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=Miami&state_code=FL&limit=200&offset=0`, headers);
             const properties = data.data.properties;
-            const city = data.data.properties[0].address.city;
-            const county = data.data.properties[0].address.county;
-            const address = data.data.properties[0].address.line;
-            const neighborhood = data.data.properties[0].address.neighborhoods[0];
-            const state = data.data.properties[0].address.state;
-            const photos = data.data.properties[0].photos;
-            const yearBuilt = data.data.properties[0].year_built;
 
-            console.log(properties);
-            //console.log(properties.map((x => x.listing_id)));
-            //getPhotos(housePhotos);
-            
-            getHouseData(properties);
-            console.log(city);
-            console.log(county);
-            console.log(address);
-            console.log(neighborhood);
-            console.log(state);
-            console.log(yearBuilt);
-            console.log(photos);
+            // Iterates through data and grabs all the data for house listings
+            const listings = properties.map((listing, index) => {
+                let arr = [];
+                arr.push(listing.address.city);
+                arr.push(listing.address.county);
+                arr.push(listing.address.line);
+                arr.push(listing.address.neighborhood_name);
+                arr.push(listing.address.state);
+                arr.push(listing.photos.map((photo) => {
+                    return photo.href;
+                }));
+                arr.push(listing.address.year_built);
+
+                return arr;
+            });
+
+            // House listing data is put into houseData
+            getHouseData(listings);
             
         }
         fetchData();
     }, [])
 
-    let properties = houseData;
-    
+   console.log(houseData);
 
     return (
         <div className={classes.section}>
