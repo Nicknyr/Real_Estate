@@ -19,6 +19,7 @@ export default function Features() {
     const classes = useStyles();
     const [houseData, getHouseData] = useState();
 
+
     // new API key
     let headers = {
         "method": "GET",
@@ -31,11 +32,34 @@ export default function Features() {
     useEffect(() => {
         async function fetchData() {
             const data =  await axios.get(`https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=Miami&state_code=FL&limit=200&offset=0`, headers);
-            getHouseData(data);
-            console.log(data);
+            const properties = data.data.properties;
+            const city = data.data.properties[0].address.city;
+            const county = data.data.properties[0].address.county;
+            const address = data.data.properties[0].address.line;
+            const neighborhood = data.data.properties[0].address.neighborhoods[0];
+            const state = data.data.properties[0].address.state;
+            const photos = data.data.properties[0].photos;
+            const yearBuilt = data.data.properties[0].year_built;
+
+            console.log(properties);
+            //console.log(properties.map((x => x.listing_id)));
+            //getPhotos(housePhotos);
+            
+            getHouseData(properties);
+            console.log(city);
+            console.log(county);
+            console.log(address);
+            console.log(neighborhood);
+            console.log(state);
+            console.log(yearBuilt);
+            console.log(photos);
+            
         }
         fetchData();
     }, [])
+
+    let properties = houseData;
+    
 
     return (
         <div className={classes.section}>
