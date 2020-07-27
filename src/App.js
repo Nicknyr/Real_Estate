@@ -1,34 +1,36 @@
 import React from 'react';
-import Navbar from './Navbar';
-import Hero from './Hero';
-import Features from './Features';
-import Explore from './Explore';
-import Guides from './Guides';
-import Footer from './Footer';
+import Home from './Home';
 import Search from './Search';
+import SignInModal from './SignIn';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './Theme';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      {/*
       <CssBaseline />
-      <Container>
-        <Navbar />
-        <Hero />
-        <Features />
-        <Explore />
-      </Container>
-      <Guides />
-      <Footer />
-      */}
-      <Container>
-        <Search />
-      </Container>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/search">
+            <Search />
+          </Route>
+          <Route exact path="/signin">
+            <SignInModal />
+          </Route>
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 }

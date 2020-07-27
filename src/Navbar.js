@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import MenuDrawer from './Menu';
 import Logo from './assets/logocropped.svg';
@@ -49,8 +50,16 @@ export default function Navbar() {
         <img src={Trulia} className={classes.logo} />
           <Grid container justify="space-between" alignItems="center">
             <Grid item className={classes.gridItem}>
-                <Button variant="text" className={classes.button}>Buy</Button>
-                <Button variant="text" className={classes.button}>Rent</Button>
+                <Link href="/search">
+                  <Button variant="text" className={classes.button}>
+                    Buy
+                  </Button>
+                </Link>
+                <Link href="/search">
+                  <Button variant="text" className={classes.button}>
+                    Rent
+                  </Button>
+                </Link>
                 <Button variant="text" className={classes.button}>Mortgage</Button>
             </Grid>
             <Grid item className={classes.gridItem}>

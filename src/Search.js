@@ -17,46 +17,6 @@ const useStyles = makeStyles({
 
 export default function Features() {
     const classes = useStyles();
-    const [houseData, getHouseData] = useState();
-
-    // Headers for API call
-    let headers = {
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-host": "realtor.p.rapidapi.com",
-            "x-rapidapi-key": process.env.REACT_APP_API_KEY
-        }
-    };
-
-    useEffect(() => {
-        async function fetchData() {
-            const data =  await axios.get(`https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=Miami&state_code=FL&limit=200&offset=0`, headers);
-            const properties = data.data.properties;
-
-            // Iterates through data and grabs all the data for house listings
-            const listings = properties.map((listing, index) => {
-                let arr = [];
-                arr.push(listing.address.city);
-                arr.push(listing.address.county);
-                arr.push(listing.address.line);
-                arr.push(listing.address.neighborhood_name);
-                arr.push(listing.address.state);
-                arr.push(listing.photos.map((photo) => {
-                    return photo.href;
-                }));
-                arr.push(listing.address.year_built);
-
-                return arr;
-            });
-
-            // House listing data is put into houseData
-            getHouseData(listings);
-            
-        }
-        fetchData();
-    }, [])
-
-   console.log(houseData);
 
     return (
         <div className={classes.section}>
