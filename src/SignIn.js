@@ -13,15 +13,16 @@ import { useChangeTheme } from "./Theme";
 import { Formik, Form, Field } from 'formik';
 import { Button, LinearProgress, Link } from '@material-ui/core';
 import { TextField } from 'formik-material-ui';
-//import theme from './FormTheme';
 import StarHalfIcon from '@material-ui/icons/StarHalf';
 import PropTypes from 'prop-types';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-//import { faTwitter, faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 import LockIcon from '@material-ui/icons/Lock';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import InputAdornment from '@material-ui/core/InputAdornment';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Logo from './assets/logo.svg';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -30,9 +31,17 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
-      padding: theme.spacing(2, 4, 3),
       height: '80%',
-      width: '80%'
+      width: '95%',
+
+      [theme.breakpoints.up('sm')]: {
+        width: '70%',
+        height: '35rem'
+      },
+
+      [theme.breakpoints.up('md')]: {
+        width: '80%'
+      }
     },
     modal: {
         display: 'flex',
@@ -42,46 +51,91 @@ const useStyles = makeStyles((theme) => ({
     grid: {
         height: '100%',
         width: '50%',
-        padding: theme.spacing(5)
+        padding: theme.spacing(1),
+
+        [theme.breakpoints.up('sm')]: {
+            padding: theme.spacing(5)
+          }
     },
     left: {
         display: 'flex',
         alignItem: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        //padding: theme.spacing(5)
+        width: '100%',
+
+        [theme.breakpoints.up('md')]: {
+            width: '50%'
+          }
     },
     right: {
+        /*
         background: `url(${Home3})`,
         backgroundSize: 'cover'
+        */
+        backgroundColor: '#3d348b',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%237678ed' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
+        display: 'none',
+
+        [theme.breakpoints.up('md')]: {
+            display: 'inline-flex'
+          }
+        
     },
     form: {
-        //background: 'red',
         margin: '2rem 0'
     },
     helperTestClasses: {
         color: 'red'
     },
     button: {
-        margin: '.5rem 0'
+        margin: '.5rem 0',
+        width: '100%',
     },
     formInput: {
         margin: '0rem 0'
-    }   
+    },
+    remember: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    signup: {
+        display: 'flex',
+        justifyContent: 'center',
+        position: 'absolute',
+        bottom: '50px'
+    },
+    signupLink: {
+        margin: '2rem 0',
+        background: 'red'
+    }
   }));
 
 export default function SignInModal() {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [open, setOpen] = React.useState(false);
+  // Remember me checkbox
+  const [state, setState] = React.useState({
+    checked: true
+  });
 
+  // Checkbox
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
+  // Modal
   const handleOpen = () => {
     setOpen(true);
   };
 
+  //Modal
   const handleClose = () => {
     setOpen(false);
   };
+
 
   return (
     <div>
@@ -94,10 +148,11 @@ export default function SignInModal() {
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         className={classes.modal}
+        disableAutoFocus
       >
           <Grid container className={classes.paper}>
               <Grid item className={[classes.grid, classes.left]}>
-                  <Typography variant="h5">Sign In</Typography>
+                  <Typography variant="h5">Log in</Typography>
                   <Formik
                         initialValues={{
                             username: '',
@@ -179,21 +234,36 @@ export default function SignInModal() {
                                     disabled={isSubmitting}
                                     onClick={submitForm}
                                     className={classes.button}
-                                    color="red"
                                     >
                                     Sign In
                                 </Button>
-                                <Typography variant="body2">
-                                    Don't have an account? 
-                                    <Link href="#">Sign up.</Link>
-                                </Typography>
+                                <Box className={classes.remember}>
+                                    <FormControlLabel
+                                        control={
+                                        <Checkbox
+                                            checked={state.checked}
+                                            onChange={handleChange}
+                                            name="checked"
+                                            color="primary"
+                                        />
+                                        }
+                                        label="Remember me"
+                                    />
+                                    <Link href="#">Forgot Password?</Link>
+                                </Box>
+                                <Box className={classes.signup}>
+                                    <Typography variant="body2">
+                                        Don't have an account? 
+                                        <Link href="#"> Sign up.</Link>
+                                    </Typography>
+                                </Box>
                             </Form>
                             )}
                     </Formik>
               </Grid>
               <Grid item className={[classes.grid, classes.right]}></Grid>
           </Grid>
-      </Modal>
+      </Modal>      
     </div>
   );
 }

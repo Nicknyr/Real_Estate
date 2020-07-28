@@ -10,6 +10,8 @@ import MenuDrawer from './Menu';
 import Logo from './assets/logocropped.svg';
 import Trulia from './assets/trulia.svg';
 import theme from './Theme';
+import SignInModal from './SignIn';
+import Portal from '@material-ui/core/Portal';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +44,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
   const classes = useStyles();
+  const [showModal, setShowModal] = React.useState(false);
+
+  const displayModal = (event) => {
+    setShowModal(!showModal);
+  }
 
   return (
     <div className={classes.root}>
@@ -65,7 +72,9 @@ export default function Navbar() {
             <Grid item className={classes.gridItem}>
                 <Button variant="text" className={classes.button}>Saved Homes</Button>
                 <Button variant="text" className={classes.button}>Saved Searches</Button>
-                <Button variant="outlined" className={classes.button}>Sign Up or Login</Button>
+                <Button variant="outlined" className={classes.button} onClick={displayModal}>
+                  Sign Up or Login
+                </Button>
             </Grid>
           </Grid>
           <MenuDrawer />
