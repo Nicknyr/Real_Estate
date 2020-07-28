@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* This usually goes in the global but let's keep it here
+   for the sake of this tutorial */
+   body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  /*  Make our map take the full viewport - 100% */
+  #root,
+  .App,
+  .mapContainer,
+  .mapBox {
+    width: 100%;
+    height: 100%;
   }
-  to {
-    transform: rotate(360deg);
+  
+  /* Tooltip code */
+  .mapboxgl-popup {
+    font-family: "Baloo Thambi 2", cursive;
+    font-size: 10px;
+    padding: 0;
+    margin: 0;
+    color: #424242;
   }
-}
+  
+  .mapboxgl-popup-content {
+    padding: 1rem;
+    margin: 0;
+  
+    > * {
+      margin: 0 0 0.5rem;
+      padding: 0;
+    }
+  
+    p {
+      border-bottom: 1px solid rgba(black, 0.2);
+  
+      b {
+        font-size: 1.6rem;
+        color: #212121;
+        padding: 0 5px;
+      }
+    }
+  
+    img {
+      width: 4rem;
+      height: 4rem;
+    }
+  }

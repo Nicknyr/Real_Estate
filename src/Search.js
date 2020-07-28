@@ -13,6 +13,9 @@ const useStyles = makeStyles({
     section: {
         margin: '5rem 0'
     },
+    x: {
+        background: 'red'
+    }
 });
 
 export default function Features() {
@@ -23,7 +26,7 @@ export default function Features() {
             <Navbar />
             <div className={classes.section}>
             <Grid container display="flex" justify="center">
-                <Grid container>
+                <Grid container className={classes.x}>
                         <Box align="left" mb={3}>
                             <Typography variant="h6">
                                 Miami, Florida Homes for Sale & Real Estate

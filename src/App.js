@@ -12,7 +12,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+import PaginationLink from './MaterialPagination';
+import Map from './Map';
 
 function App() {
   return (
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/signin">
             <SignInModal />
+          </Route>
+          <Route exact path="/pagination">
+            <PaginationLink />
           </Route>
         </Switch>
       </Router>
