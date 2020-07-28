@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 import theme from './Theme';
 import Typography from '@material-ui/core/Typography';
-import Pagination from '@material-ui/lab/Pagination';
+//import Pagination from '@material-ui/lab/Pagination';
 import House from './assets/house3.jpg';
 import BathtubOutlinedIcon from '@material-ui/icons/BathtubOutlined';
 import KingBedOutlinedIcon from '@material-ui/icons/KingBedOutlined';
@@ -13,6 +13,8 @@ import SquareFootOutlinedIcon from '@material-ui/icons/SquareFootOutlined';
 import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
 import ArrowUpwardOutlinedIcon from '@material-ui/icons/ArrowUpwardOutlined';
 import axios from 'axios';
+import HouseListings from './HouseListings';
+import Paginations from './Paginations';
 
 const useStyles = makeStyles({
     section: {
@@ -22,7 +24,9 @@ const useStyles = makeStyles({
         padding: theme.spacing(1)
     },
     houseContainer: {
-        height: 'auto'
+        height: 'auto',
+        margin: '2rem 0',
+        border: '2px solid black'
     },
     price: {
         fontSize: '1.3rem'
@@ -42,6 +46,11 @@ export default function SearchHouseItems() {
         setPage(value);
     };
 
+    const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(5);
+
     // Headers for API call
     let headers = {
         "method": "GET",
@@ -52,12 +61,13 @@ export default function SearchHouseItems() {
     };
 
     useEffect(() => {
-        async function fetchData() {
-            const data =  await axios.get(`https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=Miami&state_code=FL&limit=200&offset=0`, headers);
+        const fetchData = async () => {
+            setLoading(true);
+            const data =  await axios.get(`https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=Miami&state_code=FL&limit=100&offset=0`, headers);
             const properties = data.data.properties;
 
             // Iterates through data and grabs all the data for house listings
-            const listings = properties.map((listing, index) => {
+            const listings =  properties.map((listing, index) => {
                 let arr = [];
                 arr.push(listing.address.line);
                 arr.push(listing.address.city);
@@ -74,59 +84,69 @@ export default function SearchHouseItems() {
 
             // House listing data is put into houseData
             getHouseData(listings);
-            
+            setPosts(listings);
+            setLoading(false);
         }
-        //fetchData();
+        fetchData();
     }, [])
 
    let data = houseData;
-   //console.log(data);
+   console.log(data);
 
    console.log('page : ' + page);
+   
+   const houses = (
+    <Grid item>
+    <Paper className={classes.paper}>
+        <Box className={classes.houseContainer}>
+            <img src={House} height="auto" width="100%"/>
+            <Box display="flex">
+                <Typography variant="h5" className={classes.price}>$450,000</Typography>
+                <Box display="inline-flex" alignItems="center" pl={1}>
+                    <ArrowUpwardOutlinedIcon />
+                </Box>
+            </Box>
+            <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
+                <KingBedOutlinedIcon />
+                <Box pl={.5}>
+                    <Typography variant="body1">3bd</Typography>
+                </Box>
+            </Box>
+            <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
+                <BathtubOutlinedIcon />
+                <Box pl={.5}>
+                    <Typography variant="body1">2ba</Typography>
+                </Box>                        
+            </Box>
+            <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
+                <SquareFootOutlinedIcon />
+                <Box pl={.5}>
+                    <Typography variant="body1">2,004 sqft</Typography>
+                </Box>
+            </Box>
+            <Box align="left" className={classes.address}>
+                2950 SW 3rd Ave #9A
+                Coral Way, Miami, Florida
+            </Box>
+        </Box>
+    </Paper>
+    </Grid>
+   );
+
+   // Get current post
+   const indexOfLastPost = currentPage * postsPerPage;
+   const indexOfFirstPost = indexOfLastPost - postsPerPage;
+   const currentPost = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+   // Change page
+   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
     return (
         <Grid container>
-            <Pagination count={10} page={page} onChange={handleChange} />
-            {data.map((listing) => {
-                console.log('x : ' + listing);
-                return (
-                    <Grid item>
-                        <Paper className={classes.paper}>
-                            <Box className={classes.houseContainer}>
-                                <img src={listing[5]} height="auto" width="100%"/>
-                                <Box display="flex">
-                                    <Typography variant="h5" className={classes.price}>$450,000</Typography>
-                                    <Box display="inline-flex" alignItems="center" pl={1}>
-                                        <ArrowUpwardOutlinedIcon />
-                                    </Box>
-                                </Box>
-                                <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
-                                    <KingBedOutlinedIcon />
-                                    <Box pl={.5}>
-                                        <Typography variant="body1">3bd</Typography>
-                                    </Box>
-                                </Box>
-                                <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
-                                    <BathtubOutlinedIcon />
-                                    <Box pl={.5}>
-                                        <Typography variant="body1">2ba</Typography>
-                                    </Box>                        
-                                </Box>
-                                <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
-                                    <SquareFootOutlinedIcon />
-                                    <Box pl={.5}>
-                                        <Typography variant="body1">2,004 sqft</Typography>
-                                    </Box>
-                                </Box>
-                                <Box align="left" className={classes.address}>
-                                    {listing[0]}
-                                </Box>
-                            </Box>
-                        </Paper>
-                    </Grid>
-                );
-            })}
-                   
+            {/* {arr.map((x) => x)} */}
+            <HouseListings posts={currentPost} loading={loading} />
+            <Paginations postsPerPage={postsPerPage} totalPosts={posts.length} paginate={paginate}/>
         </Grid>
     );
 }
@@ -167,4 +187,46 @@ export default function SearchHouseItems() {
     </Box>
 </Paper>
 </Grid>
+
+            {data.map((listing) => {
+                console.log('x : ' + listing);
+                return (
+                    <Grid item>
+                        <Paper className={classes.paper}>
+                            <Box className={classes.houseContainer}>
+                                <img src={listing[5]} height="auto" width="100%"/>
+                                <Box display="flex">
+                                    <Typography variant="h5" className={classes.price}>$450,000</Typography>
+                                    <Box display="inline-flex" alignItems="center" pl={1}>
+                                        <ArrowUpwardOutlinedIcon />
+                                    </Box>
+                                </Box>
+                                <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
+                                    <KingBedOutlinedIcon />
+                                    <Box pl={.5}>
+                                        <Typography variant="body1">3bd</Typography>
+                                    </Box>
+                                </Box>
+                                <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
+                                    <BathtubOutlinedIcon />
+                                    <Box pl={.5}>
+                                        <Typography variant="body1">2ba</Typography>
+                                    </Box>                        
+                                </Box>
+                                <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
+                                    <SquareFootOutlinedIcon />
+                                    <Box pl={.5}>
+                                        <Typography variant="body1">2,004 sqft</Typography>
+                                    </Box>
+                                </Box>
+                                <Box align="left" className={classes.address}>
+                                    {listing[0]}
+                                </Box>
+                            </Box>
+                        </Paper>
+                    </Grid>
+                );
+            })}
+
+
 */

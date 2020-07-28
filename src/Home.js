@@ -18,7 +18,7 @@ export default function Home() {
                 <Features />
                 <Explore />
             </Container>
-            <Guides />
+                <Guides />
             <Container>
                 <Footer />
             </Container>

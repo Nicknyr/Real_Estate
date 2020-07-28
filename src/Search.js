@@ -7,7 +7,7 @@ import theme from './Theme';
 import Typography from '@material-ui/core/Typography';
 import SearchHouseItems from './SearchHouseItems';
 import axios from 'axios';
-
+import Navbar from './Navbar';
 
 const useStyles = makeStyles({
     section: {
@@ -19,21 +19,24 @@ export default function Features() {
     const classes = useStyles();
 
     return (
-        <div className={classes.section}>
-           <Grid container display="flex" justify="center">
-               <Grid container>
-                    <Box align="left" mb={3}>
-                        <Typography variant="h6">
-                            Miami, Florida Homes for Sale & Real Estate
-                        </Typography>
-                        <Typography variant="body1">
-                            16,417 homes available
-                        </Typography>
-                    </Box>
-               </Grid>
-                {/* Real estate house listings */}
-                <SearchHouseItems />
-           </Grid>
-        </div>
+        <>
+            <Navbar />
+            <div className={classes.section}>
+            <Grid container display="flex" justify="center">
+                <Grid container>
+                        <Box align="left" mb={3}>
+                            <Typography variant="h6">
+                                Miami, Florida Homes for Sale & Real Estate
+                            </Typography>
+                            <Typography variant="body1">
+                                16,417 homes available
+                            </Typography>
+                        </Box>
+                </Grid>
+                    {/* Real estate house listings */}
+                    <SearchHouseItems />
+            </Grid>
+            </div>
+        </>
     );
 }
