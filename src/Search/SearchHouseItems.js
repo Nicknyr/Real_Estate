@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
-import theme from './Theme';
+import theme from '../Theme';
 import Typography from '@material-ui/core/Typography';
-import House from './assets/house3.jpg';
+import House from '../assets/house3.jpg';
 import BathtubOutlinedIcon from '@material-ui/icons/BathtubOutlined';
 import KingBedOutlinedIcon from '@material-ui/icons/KingBedOutlined';
 import SquareFootOutlinedIcon from '@material-ui/icons/SquareFootOutlined';
@@ -88,7 +88,7 @@ export default function SearchHouseItems() {
             setListings(listings);
             setLoading(false);
         }
-        fetchData();
+        //fetchData();
     }, [])
 
    let data = houseData;

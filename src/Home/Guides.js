@@ -3,14 +3,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Link from '@material-ui/core/Link';
-import theme from './Theme';
+import theme from '../Theme';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
-import House from './assets/House.svg';
-import Listings from './assets/Listings.svg';
-import Search from './assets/Search.svg';
-import Contract from './assets/Contract.svg';
+import House from '../assets/House.svg';
+import Listings from '../assets/Listings.svg';
+import Search from '../assets/Search.svg';
+import Contract from '../assets/Contract.svg';
 
 const useStyles = makeStyles({
     section: {

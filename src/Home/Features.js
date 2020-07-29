@@ -2,14 +2,14 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import theme from './Theme';
+import theme from '../Theme';
 import Typography from '@material-ui/core/Typography';
 import ApartmentIcon from '@material-ui/icons/Apartment';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Button from '@material-ui/core/Button';
-import RealEstate from './assets/RealEstate.svg';
-import Rent from './assets/Rent.svg';
-import Sale from './assets/Sale.svg'; 
+import RealEstate from '../assets/RealEstate.svg';
+import Rent from '../assets/Rent.svg';
+import Sale from '../assets/Sale.svg'; 
 
 const useStyles = makeStyles({
     section: {

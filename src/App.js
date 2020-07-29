@@ -1,6 +1,6 @@
 import React from 'react';
-import Home from './Home';
-import Search from './Search';
+import Home from './Home/Home';
+import Search from './Search/Search';
 import SignInModal from './SignIn';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider } from '@material-ui/styles';
@@ -12,8 +12,8 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import PaginationLink from './MaterialPagination';
-import Map from './Map';
+import PaginationLink from './Search/MaterialPagination';
+import Map from './Search/Map';
 
 function App() {
   return (
