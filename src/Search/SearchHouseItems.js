@@ -15,6 +15,7 @@ import axios from 'axios';
 import HouseListings from './HouseListings';
 import Paginations from './Paginations';
 import Map from './Map';
+import ExampleMap from './ExampleMap';
 
 const useStyles = makeStyles({
     section: {
@@ -40,20 +41,18 @@ const useStyles = makeStyles({
 export default function SearchHouseItems() {
     const classes = useStyles();
     const [houseData, getHouseData] = useState([]);
-    
-    const [page, setPage] = React.useState(1);
-    const handleChange = (event, value) => {
-        setPage(value);
-    };
-    
-
     const [listings, setListings] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [listingsPerPage] = useState(5);
 
+    const [page, setPage] = React.useState(1);
+    const handleChange = (event, value) => {
+        setPage(value);
+    };
+
     // Headers for API call
-    let headers = {
+    const headers = {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "realtor.p.rapidapi.com",
@@ -65,20 +64,27 @@ export default function SearchHouseItems() {
         const fetchData = async () => {
             setLoading(true);
             const data =  await axios.get(`https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=Miami&state_code=FL&limit=100&offset=0`, headers);
-            const properties = data.data.properties;
 
-            // Iterates through data and grabs all the data for house listings
+            const properties = data.data.properties;
+            console.log(properties);
+
+            /// Iterates through data and grabs all the data for house listings
             const listings =  properties.map((listing, index) => {
-                let arr = [];
-                arr.push(listing.address.line);
-                arr.push(listing.address.city);
-                arr.push(listing.address.county);
-                arr.push(listing.address.neighborhood_name);
-                arr.push(listing.address.state);
+                const arr = [];
+                arr.push(
+                    listing.listing_id,
+                    listing.address.line, 
+                    listing.address.city, 
+                    listing.address.county, 
+                    listing.address.neighborhood_name, 
+                    listing.address.state,
+                    listing.year_built,
+                    listing.address.lat,
+                    listing.address.lon);
+
                 arr.push(listing.photos.map((photo) => {
                     return photo.href;
                 }));
-                arr.push(listing.address.year_built);
 
                 return arr;
             });
@@ -91,8 +97,7 @@ export default function SearchHouseItems() {
         //fetchData();
     }, [])
 
-   let data = houseData;
-   console.log(data);
+   const data = houseData;
 
    // Get current post
    const indexOfLastListing = currentPage * listingsPerPage;
@@ -114,7 +119,8 @@ export default function SearchHouseItems() {
                 />
             </Grid>
             <Grid item xs={12} md={6}>
-                <Map />
+                {/*<Map />*/}
+                <ExampleMap />
             </Grid>
         </Grid>
     );

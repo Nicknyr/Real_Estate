@@ -8,9 +8,8 @@ const HouseListings = ({listings, loading}) => {
     return (
         <ul>
             {listings.map((listing, index) => (
-                <li key={index}>
-                    {/*<p>{post}</p>*/}
-                    <img src={listing[5][0]} height="200" />
+                <li key={listing[index][0]}>
+                    <img src={listing[9][0]} height="200" />
                 </li>
             ))}
         </ul>

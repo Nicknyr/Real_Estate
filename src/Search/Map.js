@@ -13,6 +13,7 @@ import KingBedOutlinedIcon from '@material-ui/icons/KingBedOutlined';
 import SquareFootOutlinedIcon from '@material-ui/icons/SquareFootOutlined';
 import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
 import ArrowUpwardOutlinedIcon from '@material-ui/icons/ArrowUpwardOutlined';
+import MapPopUp from './MapPopUp';
 
 const useStyles = makeStyles({
     popup: {
@@ -48,7 +49,7 @@ function Map() {
       mapStyle="mapbox://styles/nicknyr/ckd6irpux09s61iqr0tbnw6lq"
     >
         <div style={{position: 'absolute', right: 10, bottom: 50}}>
-          <NavigationControl />
+          <NavigationControl/>
         </div>
         <Marker 
             latitude={25.768907} 
@@ -60,7 +61,10 @@ function Map() {
                 setSelectedListing(selectedListing);
             }}
         >
-          <LocationOnIcon style={ {fontSize: '2.5em', color: '#7678ED'} } />
+          <LocationOnIcon style={ {fontSize: '2.5em', color: '#7678ED'} } onClick={e => {
+                e.preventDefault();
+                setSelectedListing(selectedListing);
+            }}/>
         </Marker>
 
         {selectedListing ? (
