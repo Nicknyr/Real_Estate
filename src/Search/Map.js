@@ -55,15 +55,25 @@ export default function Map({listings}) {
       bearing: 0,
       pitch: 0,
     },
-    popupInfo: null
+    //popupInfo: null
+      popupInfo: {
+        longitude: null,
+        latitude: null
+      }
   });
 
   function updateViewport(viewport) {
     setLocation({viewport});
   };
 
-  function onClickMarker(city) {
-    setLocation({popupInfo: city});
+  function onClickMarker(longitude, latitude) {
+    //setLocation({popupInfo: city});
+    setLocation({
+      popupInfo: {
+        longitude: longitude,
+        latitude: latitude
+      }
+    });
   };
 
   function renderPopup() {
@@ -85,7 +95,6 @@ export default function Map({listings}) {
     );
   }
 
-  console.log('listings[7] & listings[8] : ' + listings[7], listings[8] );
 
   return (
     <MapGL
