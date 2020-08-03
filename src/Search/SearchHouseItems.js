@@ -15,7 +15,6 @@ import axios from 'axios';
 import HouseListings from './HouseListings';
 import Paginations from './Paginations';
 import Map from './Map';
-import ExampleMap from './ExampleMap';
 
 const useStyles = makeStyles({
     section: {
@@ -66,7 +65,7 @@ export default function SearchHouseItems() {
             const data =  await axios.get(`https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=Miami&state_code=FL&limit=100&offset=0`, headers);
 
             const properties = data.data.properties;
-            console.log(properties);
+            //console.log(properties);
 
             /// Iterates through data and grabs all the data for house listings
             const listings =  properties.map((listing, index) => {
@@ -107,7 +106,7 @@ export default function SearchHouseItems() {
    // Change page
    const paginate = pageNumber => setCurrentPage(pageNumber);
 
-
+    console.log('listings[7] contains : ' + listings[7]);
     return (
         <Grid container>
             <Grid item xs={12} md={6}>
@@ -119,8 +118,7 @@ export default function SearchHouseItems() {
                 />
             </Grid>
             <Grid item xs={12} md={6}>
-                {/*<Map />*/}
-                <ExampleMap />
+                <Map listings={listings}/>
             </Grid>
         </Grid>
     );

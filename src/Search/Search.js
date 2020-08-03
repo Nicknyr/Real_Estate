@@ -30,6 +30,7 @@ export default function Features() {
             <Container>
                 <div className={classes.section}>
                     <Grid container display="flex" justify="center">
+                        {/*
                         <Grid container className={classes.x}>
                             <Box align="left" mb={3}>
                                 <Typography variant="h6">
@@ -39,7 +40,7 @@ export default function Features() {
                                     16,417 homes available
                                 </Typography>
                             </Box>
-                        </Grid>
+                        </Grid>*/}
                             {/* Real estate house listings */}
                             <SearchHouseItems />
                     </Grid>

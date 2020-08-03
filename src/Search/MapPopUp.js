@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -62,3 +62,27 @@ function MapPopUp() {
 }
 
 export default MapPopUp;
+
+/*
+export default class CityInfo extends PureComponent {
+  render() {
+    const {info} = this.props;
+    const displayName = `${info.city}, ${info.state}`;
+
+    return (
+      <div>
+        <div>
+          {displayName} |{' '}
+          <a
+            target="_new"
+            href={`http://en.wikipedia.org/w/index.php?title=Special:Search&search=${displayName}`}
+          >
+            Wikipedia
+          </a>
+        </div>
+        <img width={240} src={info.image} />
+      </div>
+    );
+  }
+}
+*/

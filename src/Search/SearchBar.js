@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
     item: {
-        background: 'red',
+        //background: 'red',
         marginRight: '2rem'
     },
 });
