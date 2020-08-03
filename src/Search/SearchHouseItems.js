@@ -43,7 +43,7 @@ export default function SearchHouseItems() {
     const [listings, setListings] = useState([]);
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    const [listingsPerPage] = useState(5);
+    const [listingsPerPage] = useState(20);
 
     const [page, setPage] = React.useState(1);
     const handleChange = (event, value) => {
@@ -93,7 +93,7 @@ export default function SearchHouseItems() {
             setListings(listings);
             setLoading(false);
         }
-        //fetchData();
+        fetchData();
     }, [])
 
    const data = houseData;
@@ -106,7 +106,7 @@ export default function SearchHouseItems() {
    // Change page
    const paginate = pageNumber => setCurrentPage(pageNumber);
 
-    console.log('listings[7] contains : ' + listings[7]);
+    console.log('listings : ' + listings);
     return (
         <Grid container>
             <Grid item xs={12} md={6}>
@@ -124,82 +124,3 @@ export default function SearchHouseItems() {
     );
 }
 
-/*
-<Grid item>
-<Paper className={classes.paper}>
-    <Box className={classes.houseContainer}>
-        <img src={House} height="auto" width="100%"/>
-        <Box display="flex">
-            <Typography variant="h5" className={classes.price}>$450,000</Typography>
-            <Box display="inline-flex" alignItems="center" pl={1}>
-                <ArrowUpwardOutlinedIcon />
-            </Box>
-        </Box>
-        <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
-            <KingBedOutlinedIcon />
-            <Box pl={.5}>
-                <Typography variant="body1">3bd</Typography>
-            </Box>
-        </Box>
-        <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
-            <BathtubOutlinedIcon />
-            <Box pl={.5}>
-                <Typography variant="body1">2ba</Typography>
-            </Box>                        
-        </Box>
-        <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
-            <SquareFootOutlinedIcon />
-            <Box pl={.5}>
-                <Typography variant="body1">2,004 sqft</Typography>
-            </Box>
-        </Box>
-        <Box align="left" className={classes.address}>
-            2950 SW 3rd Ave #9A
-            Coral Way, Miami, Florida
-        </Box>
-    </Box>
-</Paper>
-</Grid>
-
-            {data.map((listing) => {
-                console.log('x : ' + listing);
-                return (
-                    <Grid item>
-                        <Paper className={classes.paper}>
-                            <Box className={classes.houseContainer}>
-                                <img src={listing[5]} height="auto" width="100%"/>
-                                <Box display="flex">
-                                    <Typography variant="h5" className={classes.price}>$450,000</Typography>
-                                    <Box display="inline-flex" alignItems="center" pl={1}>
-                                        <ArrowUpwardOutlinedIcon />
-                                    </Box>
-                                </Box>
-                                <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
-                                    <KingBedOutlinedIcon />
-                                    <Box pl={.5}>
-                                        <Typography variant="body1">3bd</Typography>
-                                    </Box>
-                                </Box>
-                                <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
-                                    <BathtubOutlinedIcon />
-                                    <Box pl={.5}>
-                                        <Typography variant="body1">2ba</Typography>
-                                    </Box>                        
-                                </Box>
-                                <Box display="inline" display="inline-flex" alignItems="center" mr={2}>
-                                    <SquareFootOutlinedIcon />
-                                    <Box pl={.5}>
-                                        <Typography variant="body1">2,004 sqft</Typography>
-                                    </Box>
-                                </Box>
-                                <Box align="left" className={classes.address}>
-                                    {listing[0]}
-                                </Box>
-                            </Box>
-                        </Paper>
-                    </Grid>
-                );
-            })}
-
-
-*/

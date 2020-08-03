@@ -30,19 +30,8 @@ export default function Features() {
             <Container>
                 <div className={classes.section}>
                     <Grid container display="flex" justify="center">
-                        {/*
-                        <Grid container className={classes.x}>
-                            <Box align="left" mb={3}>
-                                <Typography variant="h6">
-                                    Miami, Florida Homes for Sale & Real Estate
-                                </Typography>
-                                <Typography variant="body1">
-                                    16,417 homes available
-                                </Typography>
-                            </Box>
-                        </Grid>*/}
-                            {/* Real estate house listings */}
-                            <SearchHouseItems />
+                        {/* Real estate house listings */}
+                        <SearchHouseItems />
                     </Grid>
                 </div>
             </Container>

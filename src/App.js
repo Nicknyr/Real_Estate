@@ -13,7 +13,6 @@ import {
   Link
 } from "react-router-dom";
 import PaginationLink from './Search/MaterialPagination';
-import Map from './Search/Map';
 
 function App() {
   return (

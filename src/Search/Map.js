@@ -85,7 +85,7 @@ export default function Map({listings}) {
     );
   }
 
-  console.log('Props in Map.js : ' + Object.entries({listings}));
+  console.log('listings[7] & listings[8] : ' + listings[7], listings[8] );
 
   return (
     <MapGL
@@ -96,7 +96,8 @@ export default function Map({listings}) {
         onViewportChange={updateViewport}
         mapboxApiAccessToken={TOKEN}
       >
-        <MapIcons data={CITIES} onClick={onClickMarker} />
+        {/*<MapIcons data={CITIES} onClick={onClickMarker} />*/}
+        <MapIcons data={listings} onClick={onClickMarker} />
 
         {renderPopup()}
 

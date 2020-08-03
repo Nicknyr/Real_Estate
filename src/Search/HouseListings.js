@@ -52,14 +52,14 @@ const useStyles = makeStyles({
     }
 });
 
-const Housepapers = ({papers, loading}) => {
+const Housepapers = ({listings, loading}) => {
     const classes = useStyles();
 
-    if(loading) {
-        return <h2>loading</h2>;
-    }
+    console.log('listings in HouseListings :' + listings);
 
-    const listings = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15, 16];
+    if(loading) {
+        return <h2>loading....</h2>;
+    }
 
     return (
         <Grid container className={classes.container}>
@@ -74,12 +74,12 @@ const Housepapers = ({papers, loading}) => {
             <ul className={classes.ul}>
                 {listings.map((listing, index) => (
                     <li className={classes.li}>
-                        <Paper className={classes.paper}>
+                        <Paper elevation="3" className={classes.paper}>
                             <Box className={classes.houseContainer}>
                                 <Grid container display="flex" flexDirection="column">
                                     <Grid item className={classes.imageContainer}>
                                         <Box className={classes.imageContainer}>
-                                            <img src={House}  width="100%" />
+                                            <img src={listing[9][0]}  width="100%" />
                                         </Box>
                                     </Grid>
                                     <Grid item className={classes.houseDetails}>
@@ -105,8 +105,8 @@ const Housepapers = ({papers, loading}) => {
                                             </Box>
                                         </Box>
                                         <Box align="left" className={classes.address}>
-                                            2950 SW 3rd Ave #9A
-                                            Coral Way, Miami, Florida
+                                            <Typography variant="body1">{listing[1]} <br/></Typography>
+                                            <Typography variant="body1">{listing[4]}, {listing[2]}, {listing[5]}</Typography>
                                         </Box>
                                     </Grid>
                                     <Grid item className={classes.buttonContainer}>
