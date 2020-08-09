@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
+import Link from '@material-ui/core/Link';
 import theme from '../Theme';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -35,12 +36,14 @@ const useStyles = makeStyles({
         margin: '.3rem'
     },
     houseContainer: {
-        height: 'auto',
+        height: '20rem',
         width: '100%',
         marginBottom: theme.spacing(2)
     },
-    imageContainer: {
-        height: 'auto'
+    image: {
+        minHeight: '150px !important',
+        maxHeight: '150px !important',
+        objectFit: 'cover'
     },
     houseDetails: {
         paddingLeft: theme.spacing(1),
@@ -49,17 +52,20 @@ const useStyles = makeStyles({
     buttonContainer: {
         width: '100%',
         padding: theme.spacing(1)
+    },
+    font: {
+        fontSize: '.9rem'
     }
 });
 
-const Housepapers = ({listings, loading}) => {
+const Housepapers = ({listings, listing_id, loading}) => {
     const classes = useStyles();
-
-    console.log('listings in HouseListings :' + listings);
 
     if(loading) {
         return <h2>loading....</h2>;
     }
+
+    console.log('listing_id in HouseListings : ' + listing_id);
 
     return (
         <Grid container className={classes.container}>
@@ -67,56 +73,58 @@ const Housepapers = ({listings, loading}) => {
                 <Typography variant="h6">
                     Miami, Florida Homes for Sale & Real Estate
                 </Typography>
-                <Typography variant="body1">
+                <Typography variant="body2">
                     16,417 homes available
                 </Typography>
             </Box>
             <ul className={classes.ul}>
                 {listings.map((listing, index) => (
                     <li className={classes.li}>
-                        <Paper elevation="3" className={classes.paper}>
-                            <Box className={classes.houseContainer}>
-                                <Grid container display="flex" flexDirection="column">
-                                    <Grid item className={classes.imageContainer}>
-                                        <Box className={classes.imageContainer}>
-                                            <img src={listing[9][0]}  width="100%" />
-                                        </Box>
-                                    </Grid>
-                                    <Grid item className={classes.houseDetails}>
-                                        <Box display="flex">
-                                            <Typography variant="h6" className={classes.price}>$2,500</Typography>
-                                        </Box>
-                                        <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
-                                            <KingBedOutlinedIcon style={{ fontSize: '1.2rem'}} />
-                                            <Box pl={.5}>
-                                                <Typography variant="body1">3bd</Typography>
+                        <Link href="#">
+                            <Paper elevation="3" className={classes.paper}>
+                                <Box className={classes.houseContainer}>
+                                    <Grid container display="flex" flexDirection="column">
+                                        <Grid item>
+                                            <Box>
+                                                <img src={listing[9][0]}  width="100%" className={classes.image}/>
                                             </Box>
-                                        </Box>
-                                        <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
-                                            <BathtubOutlinedIcon style={{ fontSize: '1.2rem'}} />
-                                            <Box pl={.5}>
-                                                <Typography variant="body1">2ba</Typography>
-                                            </Box>                        
-                                        </Box>
-                                        <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
-                                            <SquareFootOutlinedIcon style={{ fontSize: '1.2rem'}} />
-                                            <Box pl={.5}>
-                                                <Typography variant="body1">2,004 sqft</Typography>
+                                        </Grid>
+                                        <Grid item className={classes.houseDetails}>
+                                            <Box display="flex">
+                                                <Typography variant="h6" className={classes.price}>$2,500</Typography>
                                             </Box>
-                                        </Box>
-                                        <Box align="left" className={classes.address}>
-                                            <Typography variant="body1">{listing[1]} <br/></Typography>
-                                            <Typography variant="body1">{listing[4]}, {listing[2]}, {listing[5]}</Typography>
-                                        </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <KingBedOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>3bd</Typography>
+                                                </Box>
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <BathtubOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>2ba</Typography>
+                                                </Box>                        
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <SquareFootOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>2,004 sqft</Typography>
+                                                </Box>
+                                            </Box>
+                                            <Box align="left" className={classes.address}>
+                                                <Typography variant="body2" className={classes.font}>{listing[1]} <br/></Typography>
+                                                <Typography variant="body2" className={classes.font}>{listing[4]}, {listing[2]}, {listing[5]}</Typography>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item className={classes.buttonContainer}>
+                                            <Box>
+                                                <Button variant="outlined" fullWidth>Check availability</Button>
+                                            </Box>
+                                        </Grid>
                                     </Grid>
-                                    <Grid item className={classes.buttonContainer}>
-                                        <Box>
-                                            <Button variant="outlined" fullWidth>Check availability</Button>
-                                        </Box>
-                                    </Grid>
-                                </Grid>
-                            </Box>
-                        </Paper>
+                                </Box>
+                            </Paper>
+                        </Link>
                     </li>
                 ))}
             </ul>

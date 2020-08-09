@@ -10,8 +10,6 @@ import MapGL, {
 import MapIcons from './MapIcons';
 import MapPopUp from './MapPopUp';
 
-import CITIES from './cities.json';
-
 const TOKEN = process.env.REACT_APP_MAPBOX_KEY;
 
 const geolocateStyle = {
@@ -49,9 +47,6 @@ export default function Map({listings}) {
       latitude: 25.761681,
       longitude: -80.191788,
       zoom: 12,
-      //latitude: 37.785164,
-      //longitude: -100,
-      //zoom: 3.5,
       bearing: 0,
       pitch: 0,
     },

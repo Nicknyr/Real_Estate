@@ -18,8 +18,13 @@ const useStyles = makeStyles({
         width: '50px'
     },
     houseContainer: {
-        height: 'auto',
-        width: '15rem'
+        height: '20rem',
+        width: '15rem',
+        background: 'red'
+    },
+    image: {
+      maxHeight: '10rem !important',
+      objectFit: 'contain'
     }
 });
 
@@ -28,7 +33,7 @@ function MapPopUp() {
 
   return (
         <Box className={classes.houseContainer}>
-            <img src={House}  width="100%" />
+            <img src={House} className={classes.image} />
             <Box display="flex">
                 <Typography variant="h5" className={classes.price}>$450,000</Typography>
                 <Box display="inline-flex" alignItems="center" pl={1}>

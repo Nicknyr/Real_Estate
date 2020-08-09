@@ -1,16 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper';
 import theme from '../Theme';
-import Typography from '@material-ui/core/Typography';
-import House from '../assets/house3.jpg';
-import BathtubOutlinedIcon from '@material-ui/icons/BathtubOutlined';
-import KingBedOutlinedIcon from '@material-ui/icons/KingBedOutlined';
-import SquareFootOutlinedIcon from '@material-ui/icons/SquareFootOutlined';
-import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
-import ArrowUpwardOutlinedIcon from '@material-ui/icons/ArrowUpwardOutlined';
 import axios from 'axios';
 import HouseListings from './HouseListings';
 import Paginations from './Paginations';
@@ -93,7 +84,7 @@ export default function SearchHouseItems() {
             setListings(listings);
             setLoading(false);
         }
-        fetchData();
+        //fetchData();
     }, [])
 
    const data = houseData;
@@ -106,11 +97,11 @@ export default function SearchHouseItems() {
    // Change page
    const paginate = pageNumber => setCurrentPage(pageNumber);
 
-    console.log('listings : ' + listings);
+    //console.log('listings : ' + listings);
     return (
         <Grid container>
             <Grid item xs={12} md={6}>
-                <HouseListings listings={currentListing} loading={loading} />
+                <HouseListings listings={currentListing} listing_id={listings[0]} loading={loading} />
                 <Paginations 
                     listingsPerPage={listingsPerPage} 
                     totalListings={listings.length} 

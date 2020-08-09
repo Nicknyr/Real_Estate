@@ -9,14 +9,13 @@ export default class MapIcons extends PureComponent {
   render() {
     const {data, onClick} = this.props;
 
-    //console.log('data in MapIcons : ' + data);
-
     return data.map((listing, index) => (
       <Marker key={`marker-${index}`} longitude={listing[8]} latitude={listing[7]}>
        <LocationOnIcon 
           height={SIZE}
           fill='#7778ed'
           onClick={() => onClick(listing)}
+          onHover={() => alert('hovered over : ' + listing)}
        />
       </Marker>
     ));
