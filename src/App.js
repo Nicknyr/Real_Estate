@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './Home/Home';
 import Search from './Search/Search';
 import SignInModal from './SignIn';
+import ViewHouse from './HouseDetails/ViewHouse';
 import Container from '@material-ui/core/Container';
 import { ThemeProvider } from '@material-ui/styles';
 import theme from './Theme';
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route exact path="/search">
             <Search />
+          </Route>
+          <Route exact path="/search/housedetails">
+            <ViewHouse />
           </Route>
           <Route exact path="/signin">
             <SignInModal />
