@@ -56,7 +56,7 @@ export default function SearchHouseItems() {
             const data =  await axios.get(`https://realtor.p.rapidapi.com/properties/v2/list-for-rent?sort=relevance&city=Miami&state_code=FL&limit=100&offset=0`, headers);
 
             const properties = data.data.properties;
-            //console.log(properties);
+            console.log(properties);
 
             /// Iterates through data and grabs all the data for house listings
             const listings =  properties.map((listing, index) => {
@@ -84,7 +84,7 @@ export default function SearchHouseItems() {
             setListings(listings);
             setLoading(false);
         }
-        //fetchData();
+        fetchData();
     }, [])
 
    const data = houseData;

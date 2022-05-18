@@ -14,7 +14,7 @@ import theme from '../Theme';
 import House3 from '../assets/house3.jpg';
 import House4 from '../assets/house4.jpg';
 import House5 from '../assets/house5.jpg';
-import ImageGallery from 'react-image-gallery';
+//import ImageGallery from 'react-image-gallery';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 

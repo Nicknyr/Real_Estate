@@ -86,7 +86,7 @@ function ViewHouse() {
   return (
       <>
       <Navbar />
-      <Container maxWidth="md" onClick={}>
+      <Container maxWidth="md">
         <Paper elevation={3} className={classes.paper}>
             <Grid container className={classes.container} display="flex" m={3}>
                 <Grid item xs={9} className={classes.largeImage}>

@@ -86,7 +86,7 @@ const useStyles = makeStyles({
         '&:hover, &:focus': {
             transform: `scale(1.1)`
         }
-    }
+    },
 });
 
 const CityCard = ({image, city, neighborhood, variant}) => {

@@ -32,15 +32,27 @@ import Home12 from '../assets/house12.jpg';
 
 const useStyles = makeStyles({
     container: {
-        background: 'red',
-        //width: '60rem',
-        height: '29rem',
+        //background: 'red',
+        width: '100rem',
+        //height: '29rem',
+        height: 'auto',
+        overflow: 'contain',
         display: 'flex',
-        flexWrap: 'wrap',
-        overflow: 'contain'
-    },
-    container2: {
+        //flexDirection: 'row',
+        //flexWrap: 'wrap',
+        //alignItems: 'stretch',
         
+        [theme.breakpoints.up('md')]: {
+            //height: 'auto',
+          },
+    },
+    tallContainer: {
+        //background: 'green',
+        width: '25%',
+    },
+    smallContainer: {
+        //background: 'orange',
+        width: '75%',
     }
 });
 
@@ -48,38 +60,64 @@ const CardSection = ({image, city, neighborhood, variant}) => {
     const classes = useStyles();
     return (
         <Grid container className={classes.container}>
-        <Grid item>
-            <CityCard 
-                image={Miami} 
-                city={'Miami, Florida'} 
-                neighborhood={'South Beach'}
-                variant={'long'}
-            />
-        </Grid>
-        <Grid item>
-            <ReviewCard 
-                user={'Nick, New York resident'} 
-                review={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim.'}
-            />
-            <CityCard 
-                image={Home1} 
-                city={'Fort Lauderdale, Florida'} 
-                neighborhood={'Las Olas Isles'}
-                variant={'short'}
-            /> 
-            <CityCard 
-                image={Home2} 
-                city={'Boston, Massachusets'} 
-                neighborhood={'Brookline'}
-                variant={'short'}
-            /> 
-            <CityCard 
-                image={Home3} 
-                city={'San Diego, California'} 
-                neighborhood={'La Jolla'}
-                variant={'short'}
-            /> 
-        </Grid>
+            <Grid container className={classes.tallContainer}>
+                <Grid item>
+                    <CityCard 
+                        image={Miami} 
+                        city={'Miami, Florida'} 
+                        neighborhood={'South Beach'}
+                        variant={'long'}
+                    />
+                </Grid>
+            </Grid>
+            <Grid container className={classes.smallContainer}>
+                <Grid item>
+                    <ReviewCard 
+                        user={'Nick, New York resident'} 
+                        review={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim.'}
+                    />
+                </Grid>
+                <Grid item>
+                    <CityCard 
+                        image={Home1} 
+                        city={'Fort Lauderdale, Florida'} 
+                        neighborhood={'Las Olas Isles'}
+                        variant={'short'}
+                    />
+                </Grid> 
+                <Grid item>
+                    <CityCard 
+                        image={Home2} 
+                        city={'Boston, Massachusets'} 
+                        neighborhood={'Brookline'}
+                        variant={'short'}
+                    /> 
+                </Grid>
+                <Grid item>
+                    <CityCard 
+                        image={Home3} 
+                        city={'San Diego, California'} 
+                        neighborhood={'La Jolla'}
+                        variant={'short'}
+                    /> 
+                </Grid>
+                <Grid item>
+                    <CityCard 
+                        image={Home2} 
+                        city={'Boston, Massachusets'} 
+                        neighborhood={'Brookline'}
+                        variant={'short'}
+                    /> 
+                </Grid>
+                <Grid item>
+                    <CityCard 
+                        image={Home3} 
+                        city={'San Diego, California'} 
+                        neighborhood={'La Jolla'}
+                        variant={'short'}
+                    /> 
+                </Grid>
+            </Grid>
         </Grid>
     );
 }
