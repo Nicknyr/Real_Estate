@@ -26,8 +26,8 @@ const useStyles = makeStyles({
     },
     cardLong: {
         width: '18rem',
-        height: '29rem',
-        marginTop: '1rem',
+        height: '30rem',
+        //marginTop: '1rem',
         marginRight: '.5rem',
         marginLeft: '.5rem',
         position: 'relative'

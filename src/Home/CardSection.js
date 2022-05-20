@@ -38,21 +38,37 @@ const useStyles = makeStyles({
         height: 'auto',
         overflow: 'contain',
         display: 'flex',
-        //flexDirection: 'row',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
         //flexWrap: 'wrap',
         //alignItems: 'stretch',
         
         [theme.breakpoints.up('md')]: {
             //height: 'auto',
+            flexDirection: 'row',
           },
     },
     tallContainer: {
-        //background: 'green',
-        width: '25%',
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        marginTop: '1rem',
+
+        [theme.breakpoints.up('md')]: {
+            width: '25%',
+            marginTop: '0'
+        }
     },
     smallContainer: {
         //background: 'orange',
-        width: '75%',
+        display: 'flex',
+        justifyContent: 'center',
+        
+
+        [theme.breakpoints.up('md')]: {
+            width: '75%',
+        }
     }
 });
 
@@ -103,9 +119,9 @@ const CardSection = ({image, city, neighborhood, variant}) => {
                 </Grid>
                 <Grid item>
                     <CityCard 
-                        image={Home2} 
-                        city={'Boston, Massachusets'} 
-                        neighborhood={'Brookline'}
+                        image={Home7} 
+                        city={'Missoula, Montana'} 
+                        neighborhood={'Lower Rattlesnake'}
                         variant={'short'}
                     /> 
                 </Grid>
