@@ -32,20 +32,15 @@ import Home12 from '../assets/house12.jpg';
 
 const useStyles = makeStyles({
     container: {
-        //background: 'red',
         width: '100rem',
-        //height: '29rem',
         height: 'auto',
         overflow: 'contain',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        //flexWrap: 'wrap',
-        //alignItems: 'stretch',
         
         [theme.breakpoints.up('md')]: {
-            //height: 'auto',
             flexDirection: 'row',
           },
     },
@@ -61,7 +56,6 @@ const useStyles = makeStyles({
         }
     },
     smallContainer: {
-        //background: 'orange',
         display: 'flex',
         justifyContent: 'center',
         

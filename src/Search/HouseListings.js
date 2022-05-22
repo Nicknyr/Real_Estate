@@ -13,16 +13,23 @@ import KingBedOutlinedIcon from '@material-ui/icons/KingBedOutlined';
 import SquareFootOutlinedIcon from '@material-ui/icons/SquareFootOutlined';
 import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined';
 import ArrowUpwardOutlinedIcon from '@material-ui/icons/ArrowUpwardOutlined';
+import Home1 from '../assets/house1.jpg';
+import Divider from '@material-ui/core/Divider';
 
 const useStyles = makeStyles({
     container: {
         height: '85vh',
         overflow: 'scroll',
-        padding: theme.spacing(1)
+        padding: theme.spacing(1),
     },
     paper: {
         height: 'auto',
-        width: '18rem',
+        margin: '2rem 0',
+        width: '100%',
+
+        [theme.breakpoints.up('md')]: {
+            width: '18rem',
+        }
     },
     ul: {
         display: 'flex',
@@ -30,24 +37,29 @@ const useStyles = makeStyles({
         listStyleType: 'none',
         margin: 0,
         padding: 0,
-        justifyContent: 'space-between'
+        justifyContent: 'center',
+
+        [theme.breakpoints.up('md')]: {
+            justifyContent: 'space-between',
+        }
     },
     li: {
-        margin: '.3rem'
+       margin: '.3rem',
     },
     houseContainer: {
-        height: '20rem',
+        height: 'auto',
         width: '100%',
-        marginBottom: theme.spacing(2)
+        marginBottom: theme.spacing(2),
     },
     image: {
         minHeight: '150px !important',
-        maxHeight: '150px !important',
+        //maxHeight: '150px !important',
         objectFit: 'cover'
     },
     houseDetails: {
         paddingLeft: theme.spacing(1),
-        paddingRight: theme.spacing(1)
+        paddingRight: theme.spacing(1),
+        width: '100%',
     },
     buttonContainer: {
         width: '100%',
@@ -55,6 +67,17 @@ const useStyles = makeStyles({
     },
     font: {
         fontSize: '.9rem'
+    },
+    divider: {
+        height: '4px',
+        width: '100%',
+        color: 'red',
+        backgroundColor: 'rgb(82, 84, 165)',
+        borderRadius: '5px',
+
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        }
     }
 });
 
@@ -78,6 +101,7 @@ const Housepapers = ({listings, listing_id, loading}) => {
                 </Typography>
             </Box>
             <ul className={classes.ul}>
+            {/*
                 {listings.map((listing, index) => (
                     <li className={classes.li}>
                         <Link href="#">
@@ -127,6 +151,145 @@ const Housepapers = ({listings, listing_id, loading}) => {
                         </Link>
                     </li>
                 ))}
+                */}
+                <Link href="#">
+                            <Paper elevation="3" className={classes.paper}>
+                                <Box className={classes.houseContainer}>
+                                    <Grid container display="flex" flexDirection="column">
+                                        <Grid item>
+                                            <Box>
+                                                <img src={Home1}  width="100%" className={classes.image}/>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item className={classes.houseDetails}>
+                                            <Box display="flex">
+                                                <Typography variant="h6" className={classes.price}>$2,500</Typography>
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <KingBedOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>3bd</Typography>
+                                                </Box>
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <BathtubOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>2ba</Typography>
+                                                </Box>                        
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <SquareFootOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>2,004 sqft</Typography>
+                                                </Box>
+                                            </Box>
+                                            <Box align="left" className={classes.address}>
+                                                <Typography variant="body2" className={classes.font}>1 <br/></Typography>
+                                                <Typography variant="body2" className={classes.font}>123 Main Street, Fort Lauderdale, 33301</Typography>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item className={classes.buttonContainer}>
+                                            <Box>
+                                                <Button variant="outlined" fullWidth>Check availability</Button>
+                                            </Box>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
+                            </Paper>
+                        </Link>
+                        <Divider className={classes.divider}/>
+                        <Link href="#">
+                            <Paper elevation="3" className={classes.paper}>
+                                <Box className={classes.houseContainer}>
+                                    <Grid container display="flex" flexDirection="column">
+                                        <Grid item>
+                                            <Box>
+                                                <img src={Home1}  width="100%" className={classes.image}/>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item className={classes.houseDetails}>
+                                            <Box display="flex">
+                                                <Typography variant="h6" className={classes.price}>$2,500</Typography>
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <KingBedOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>3bd</Typography>
+                                                </Box>
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <BathtubOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>2ba</Typography>
+                                                </Box>                        
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <SquareFootOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>2,004 sqft</Typography>
+                                                </Box>
+                                            </Box>
+                                            <Box align="left" className={classes.address}>
+                                                <Typography variant="body2" className={classes.font}>1 <br/></Typography>
+                                                <Typography variant="body2" className={classes.font}>123 Main Street, Fort Lauderdale, 33301</Typography>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item className={classes.buttonContainer}>
+                                            <Box>
+                                                <Button variant="outlined" fullWidth>Check availability</Button>
+                                            </Box>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
+                            </Paper>
+                        </Link>
+                        <Divider className={classes.divider} />
+                        <Link href="#">
+                            <Paper elevation="3" className={classes.paper}>
+                                <Box className={classes.houseContainer}>
+                                    <Grid container display="flex" flexDirection="column">
+                                        <Grid item>
+                                            <Box>
+                                                <img src={Home1}  width="100%" className={classes.image}/>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item className={classes.houseDetails}>
+                                            <Box display="flex">
+                                                <Typography variant="h6" className={classes.price}>$2,500</Typography>
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <KingBedOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>3bd</Typography>
+                                                </Box>
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <BathtubOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>2ba</Typography>
+                                                </Box>                        
+                                            </Box>
+                                            <Box display="inline" display="inline-flex" alignItems="center" mr={1}>
+                                                <SquareFootOutlinedIcon style={{ fontSize: '1rem'}} />
+                                                <Box pl={.5}>
+                                                    <Typography variant="body2" className={classes.font}>2,004 sqft</Typography>
+                                                </Box>
+                                            </Box>
+                                            <Box align="left" className={classes.address}>
+                                                <Typography variant="body2" className={classes.font}>1 <br/></Typography>
+                                                <Typography variant="body2" className={classes.font}>123 Main Street, Fort Lauderdale, 33301</Typography>
+                                            </Box>
+                                        </Grid>
+                                        <Grid item className={classes.buttonContainer}>
+                                            <Box>
+                                                <Button variant="outlined" fullWidth>Check availability</Button>
+                                            </Box>
+                                        </Grid>
+                                    </Grid>
+                                </Box>
+                            </Paper>
+                        </Link>
+                        <Divider className={classes.divider} />
             </ul>
         </Grid>
     )

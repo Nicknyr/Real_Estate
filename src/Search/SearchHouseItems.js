@@ -84,7 +84,7 @@ export default function SearchHouseItems() {
             setListings(listings);
             setLoading(false);
         }
-        fetchData();
+        //fetchData();
     }, [])
 
    const data = houseData;
@@ -109,7 +109,7 @@ export default function SearchHouseItems() {
                 />
             </Grid>
             <Grid item xs={12} md={6}>
-                <Map listings={listings}/>
+                {/*<Map listings={listings}/>*/}
             </Grid>
         </Grid>
     );
