@@ -17,12 +17,14 @@ import ArrowUpwardOutlinedIcon from '@material-ui/icons/ArrowUpwardOutlined';
 import Home1 from '../assets/house1.jpg';
 import Divider from '@material-ui/core/Divider';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Controls from './Controls';
 
 const useStyles = makeStyles({
     container: {
         height: '85vh',
         overflow: 'scroll',
         //padding: theme.spacing(1),
+        position: 'absolute'
     },
     paper: {
         height: 'auto',
@@ -307,6 +309,11 @@ const Housepapers = ({listings, listing_id, loading}) => {
                         </Paper>
                     </Link>
             </ul>
+            <Grid container display="flex" flexDirection="row" justifyContent='center'>
+                <Box align="center">
+                    <Controls />
+                </Box>
+            </Grid>
         </Grid>
     )
 }
