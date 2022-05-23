@@ -99,7 +99,7 @@ export default function SearchHouseItems() {
 
     //console.log('listings : ' + listings);
     return (
-        <Grid container>
+        <Grid container disableGutters={true}>
             <Grid item xs={12} md={6}>
                 <HouseListings listings={currentListing} listing_id={listings[0]} loading={loading} />
                 <Paginations 

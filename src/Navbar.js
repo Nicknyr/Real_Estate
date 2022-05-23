@@ -12,7 +12,8 @@ import Trulia from './assets/trulia.svg';
 import theme from './Theme';
 import SignInModal from './SignIn';
 import Portal from '@material-ui/core/Portal';
-
+import House from '@material-ui/icons/House';
+import Icon from '@material-ui/core/Icon';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +55,8 @@ export default function Navbar() {
     <div className={classes.root}>
       <AppBar position="static" color="pink" className={classes.appBar}>
         <Toolbar variant="dense">
-        <img src={Trulia} className={classes.logo} />
+        {/*<img src={Trulia} className={classes.logo} />*/}
+        <House color="primary" fontSize="large" />
           <Grid container justify="space-between" alignItems="center">
             <Grid item className={classes.gridItem}>
                 <Link href="/search">

@@ -27,6 +27,7 @@ import Home10 from '../assets/house10.jpg';
 import Home11 from '../assets/house11.jpg';
 import Home12 from '../assets/house12.jpg';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import House from '@material-ui/icons/House';
 
 
 const useStyles = makeStyles({
