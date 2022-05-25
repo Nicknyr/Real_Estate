@@ -9,7 +9,6 @@ import Container from '@material-ui/core/Container';
 import SearchHouseItems from './SearchHouseItems';
 import axios from 'axios';
 import Navbar from '../Navbar';
-import ButtonFilters from './ButtonFilters';
 
 const useStyles = makeStyles({
     section: {
@@ -26,7 +25,6 @@ export default function Features() {
     return (
         <>
         <Navbar />
-        <ButtonFilters />
             <Container>
                 <div className={classes.section}>
                     <Grid container display="flex" justify="center">

@@ -13,9 +13,22 @@ import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
+    container: {
+        padding: "0"
+    },
     item: {
-        //background: 'red',
-        marginRight: '2rem'
+        display: 'flex',
+        //justifyContent: 'space-between',
+        marginTop: '.5rem',
+        marginBottom: '1rem',
+        width: 'auto'
+    },
+    buttonContainer: {
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+    button: {
+        //width: '2rem !important'
     },
 });
 
@@ -49,22 +62,11 @@ export default function SplitButton() {
   };
 
   return (
-    <Container>
-        <Grid container display="flex" alignItems="center" className={classes.item}>
+    <Container className={classes.container}>
+        <Grid container display="flex" alignItems="center" className={classes.buttonContainer}>
             <Grid item className={classes.item}>
                 <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-                <Button onClick={handleClick}>Price</Button>
-                <Button
-                    color="primary"
-                    size="small"
-                    aria-controls={open ? 'split-button-menu' : undefined}
-                    aria-expanded={open ? 'true' : undefined}
-                    aria-label="Price"
-                    aria-haspopup="menu"
-                    onClick={handleToggle}
-                >
-                    <ArrowDropDownIcon />
-                </Button>
+                <Button variant="contained" onClick={handleClick}>Price</Button>
                 </ButtonGroup>
                 <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                 {({ TransitionProps, placement }) => (
@@ -96,18 +98,7 @@ export default function SplitButton() {
             </Grid>
             <Grid item className={classes.item}>
                 <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-                <Button onClick={handleClick}>Beds</Button>
-                <Button
-                    color="primary"
-                    size="small"
-                    aria-controls={open ? 'split-button-menu' : undefined}
-                    aria-expanded={open ? 'true' : undefined}
-                    aria-label="select merge strategy"
-                    aria-haspopup="menu"
-                    onClick={handleToggle}
-                >
-                    <ArrowDropDownIcon />
-                </Button>
+                <Button variant="contained" onClick={handleClick}>Beds</Button>
                 </ButtonGroup>
                 <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                 {({ TransitionProps, placement }) => (
@@ -139,18 +130,7 @@ export default function SplitButton() {
             </Grid>
             <Grid item className={classes.item}>
                 <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-                <Button onClick={handleClick}>Home Types</Button>
-                <Button
-                    color="primary"
-                    size="small"
-                    aria-controls={open ? 'split-button-menu' : undefined}
-                    aria-expanded={open ? 'true' : undefined}
-                    aria-label="select merge strategy"
-                    aria-haspopup="menu"
-                    onClick={handleToggle}
-                >
-                    <ArrowDropDownIcon />
-                </Button>
+                <Button variant="contained" onClick={handleClick}>Home Type</Button>
                 </ButtonGroup>
                 <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                 {({ TransitionProps, placement }) => (

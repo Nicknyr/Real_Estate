@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
     //flexGrow: 1,
   },
   appBar: {
-    boxShadow: 'none'  
+    boxShadow: 'none',
+    borderBottom: '1px solid black'
   },
   menuButton: {
     marginRight: theme.spacing(2),

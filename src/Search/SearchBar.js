@@ -12,11 +12,13 @@ import Typography from '@material-ui/core/Typography';
 import MapIcon from '@material-ui/icons/Map';
 import FilterIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
+import ButtonFilters from './ButtonFilters';
 
 const useStyles = makeStyles({
     searchContainer: {
         //background: 'red',
-        width: '50%',
+        width: '100%',
+        marginBottom: '.5rem'
     },
     search: {
         position: 'relative',
@@ -82,6 +84,7 @@ export default function SearchBar() {
                 />
                 </div>
             </Box>
+            <ButtonFilters />
         </Grid>
     );  
 }

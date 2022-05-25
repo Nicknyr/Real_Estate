@@ -14,6 +14,7 @@ const useStyles = makeStyles({
     controlsContainer: {
         height: '3.5rem',
         width: 'auto',
+        display: 'flex',
         background: '#7678ED',
         //opacity: '.7',
         color: 'white',
@@ -43,47 +44,52 @@ export default function Controls({toggleMap, toggleList}) {
 
     const classes = useStyles();
     return (
-        <Grid container display="flex" className={classes.controlsContainer}>
-            <Box 
-                display="flex" 
-                alignItems="center" 
-                justifyContent="space-between"  
-                z-index="100">
-                    <Box display="flex" alignItems="center">
-                        <MapIcon 
-                            className={classes.icon} 
-                            fontSize="medium" 
-                            color="white"
+        <Grid container display="flex" justifyContent="center">
+            <Paper 
+                elevation="4"
+                className={classes.controlsContainer}
+                >
+                <Box 
+                    display="flex" 
+                    alignItems="center" 
+                    justifyContent="space-between"  
+                    z-index="100">
+                        <Box display="flex" alignItems="center">
+                            <MapIcon 
+                                className={classes.icon} 
+                                fontSize="medium" 
+                                color="white"
+                            />
+                            <Button 
+                                variant="text" 
+                                color="primary"
+                                className={classes.button}
+                                onClick={toggleMap}
+                                >
+                                    Map
+                            </Button>
+                        </Box>
+                        <Divider 
+                            orientation="vertical" 
+                            className={classes.divider} 
                         />
-                        <Button 
-                            variant="text" 
-                            color="primary"
-                            className={classes.button}
-                            onClick={toggleMap}
-                            >
-                                Map
-                        </Button>
-                    </Box>
-                    <Divider 
-                        orientation="vertical" 
-                        className={classes.divider} 
-                    />
-                    <Box display="flex" alignItems="center">
-                        <FilterIcon 
-                            className={classes.icon} 
-                            fontSize="medium" 
-                            color="white"
-                        />
-                        <Button 
-                            variant="text" 
-                            color="primary" 
-                            className={classes.button}
-                            onClick={toggleList}
-                            >
-                                Sort
-                        </Button>
-                    </Box>
-            </Box>
+                        <Box display="flex" alignItems="center">
+                            <FilterIcon 
+                                className={classes.icon} 
+                                fontSize="medium" 
+                                color="white"
+                            />
+                            <Button 
+                                variant="text" 
+                                color="primary" 
+                                className={classes.button}
+                                onClick={toggleList}
+                                >
+                                    Sort
+                            </Button>
+                        </Box>
+                </Box>
+            </Paper>
         </Grid>
     );  
 }
