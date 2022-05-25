@@ -1,186 +1,87 @@
-import React from 'react';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import Grow from '@material-ui/core/Grow';
-import Paper from '@material-ui/core/Paper';
-import Popper from '@material-ui/core/Popper';
-import MenuItem from '@material-ui/core/MenuItem';
-import MenuList from '@material-ui/core/MenuList';
+import React, { useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
+import InputBase from '@material-ui/core/InputBase';
+import fade from '@material-ui/core/Fade';
+import theme from '../Theme';
+import Typography from '@material-ui/core/Typography';
+import MapIcon from '@material-ui/icons/Map';
+import FilterIcon from '@material-ui/icons/FilterList';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles({
-    item: {
+    searchContainer: {
         //background: 'red',
-        marginRight: '2rem'
+        width: '50%',
     },
-});
+    search: {
+        position: 'relative',
+        borderRadius: theme.shape.borderRadius,
+        /*
+        backgroundColor: fade(theme.palette.common.white, 0.15),
+        '&:hover': {
+          backgroundColor: fade(theme.palette.common.white, 0.25),
+        },
+        */
+        border: '1px solid #2A2A33',
+        marginLeft: 0,
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+          marginLeft: theme.spacing(1),
+          width: 'auto',
+        },
+      },
+      searchIcon: {
+        padding: theme.spacing(0, 2),
+        height: '100%',
+        position: 'absolute',
+        pointerEvents: 'none',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      inputRoot: {
+        color: 'inherit',
+      },
+      inputInput: {
+        padding: theme.spacing(1, 1, 1, 0),
+        // vertical padding + font size from searchIcon
+        paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+        transition: theme.transitions.create('width'),
+        width: '100%',
+        [theme.breakpoints.up('sm')]: {
+          width: '12ch',
+          '&:focus': {
+            width: '20ch',
+          },
+        },
+      },
+})
 
-const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge'];
+export default function SearchBar() {
 
-export default function SplitButton() {
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
-  const classes = useStyles();
-
-  const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex]}`);
-  };
-
-  const handleMenuItemClick = (event, index) => {
-    setSelectedIndex(index);
-    setOpen(false);
-  };
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  return (
-    <Container>
-        <Grid container display="flex" alignItems="center" className={classes.item}>
-            <Grid item className={classes.item}>
-                <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-                <Button onClick={handleClick}>Price</Button>
-                <Button
-                    color="primary"
-                    size="small"
-                    aria-controls={open ? 'split-button-menu' : undefined}
-                    aria-expanded={open ? 'true' : undefined}
-                    aria-label="Price"
-                    aria-haspopup="menu"
-                    onClick={handleToggle}
-                >
-                    <ArrowDropDownIcon />
-                </Button>
-                </ButtonGroup>
-                <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                {({ TransitionProps, placement }) => (
-                    <Grow
-                    {...TransitionProps}
-                    style={{
-                        transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+    const classes = useStyles();
+    return (
+        <Grid container display="flex" className={classes.controlsContainer}>
+            <Box className={classes.searchContainer}>
+                <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                    <SearchIcon />
+                </div>
+                <InputBase
+                    placeholder="Search..."
+                    classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
                     }}
-                    >
-                    <Paper>
-                        <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList id="split-button-menu">
-                            {options.map((option, index) => (
-                            <MenuItem
-                                key={option}
-                                disabled={index === 2}
-                                selected={index === selectedIndex}
-                                onClick={(event) => handleMenuItemClick(event, index)}
-                            >
-                                {option}
-                            </MenuItem>
-                            ))}
-                        </MenuList>
-                        </ClickAwayListener>
-                    </Paper>
-                    </Grow>
-                )}
-                </Popper>
-            </Grid>
-            <Grid item className={classes.item}>
-                <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-                <Button onClick={handleClick}>Beds</Button>
-                <Button
-                    color="primary"
-                    size="small"
-                    aria-controls={open ? 'split-button-menu' : undefined}
-                    aria-expanded={open ? 'true' : undefined}
-                    aria-label="select merge strategy"
-                    aria-haspopup="menu"
-                    onClick={handleToggle}
-                >
-                    <ArrowDropDownIcon />
-                </Button>
-                </ButtonGroup>
-                <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                {({ TransitionProps, placement }) => (
-                    <Grow
-                    {...TransitionProps}
-                    style={{
-                        transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
-                    }}
-                    >
-                    <Paper>
-                        <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList id="split-button-menu">
-                            {options.map((option, index) => (
-                            <MenuItem
-                                key={option}
-                                disabled={index === 2}
-                                selected={index === selectedIndex}
-                                onClick={(event) => handleMenuItemClick(event, index)}
-                            >
-                                {option}
-                            </MenuItem>
-                            ))}
-                        </MenuList>
-                        </ClickAwayListener>
-                    </Paper>
-                    </Grow>
-                )}
-                </Popper>
-            </Grid>
-            <Grid item className={classes.item}>
-                <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-                <Button onClick={handleClick}>Home Types</Button>
-                <Button
-                    color="primary"
-                    size="small"
-                    aria-controls={open ? 'split-button-menu' : undefined}
-                    aria-expanded={open ? 'true' : undefined}
-                    aria-label="select merge strategy"
-                    aria-haspopup="menu"
-                    onClick={handleToggle}
-                >
-                    <ArrowDropDownIcon />
-                </Button>
-                </ButtonGroup>
-                <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
-                {({ TransitionProps, placement }) => (
-                    <Grow
-                    {...TransitionProps}
-                    style={{
-                        transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
-                    }}
-                    >
-                    <Paper>
-                        <ClickAwayListener onClickAway={handleClose}>
-                        <MenuList id="split-button-menu">
-                            {options.map((option, index) => (
-                            <MenuItem
-                                key={option}
-                                disabled={index === 2}
-                                selected={index === selectedIndex}
-                                onClick={(event) => handleMenuItemClick(event, index)}
-                            >
-                                {option}
-                            </MenuItem>
-                            ))}
-                        </MenuList>
-                        </ClickAwayListener>
-                    </Paper>
-                    </Grow>
-                )}
-                </Popper>
-            </Grid>
+                    inputProps={{ 'aria-label': 'search ' }}
+                />
+                </div>
+            </Box>
         </Grid>
-    </Container>
-  );
+    );  
 }

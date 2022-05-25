@@ -24,7 +24,6 @@ const useStyles = makeStyles({
         height: '85vh',
         overflow: 'scroll',
         //padding: theme.spacing(1),
-        position: 'absolute'
     },
     paper: {
         height: 'auto',
@@ -309,11 +308,13 @@ const Housepapers = ({listings, listing_id, loading}) => {
                         </Paper>
                     </Link>
             </ul>
+            {/*
             <Grid container display="flex" flexDirection="row" justifyContent='center'>
                 <Box align="center">
                     <Controls />
                 </Box>
             </Grid>
+            */}
         </Grid>
     )
 }

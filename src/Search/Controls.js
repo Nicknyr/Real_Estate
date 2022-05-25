@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -39,7 +39,8 @@ const useStyles = makeStyles({
     }
 })
 
-export default function Controls() {
+export default function Controls({toggleMap, toggleList}) {
+
     const classes = useStyles();
     return (
         <Grid container display="flex" className={classes.controlsContainer}>
@@ -58,6 +59,7 @@ export default function Controls() {
                             variant="text" 
                             color="primary"
                             className={classes.button}
+                            onClick={toggleMap}
                             >
                                 Map
                         </Button>
@@ -76,6 +78,7 @@ export default function Controls() {
                             variant="text" 
                             color="primary" 
                             className={classes.button}
+                            onClick={toggleList}
                             >
                                 Sort
                         </Button>

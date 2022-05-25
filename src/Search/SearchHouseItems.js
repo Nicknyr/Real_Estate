@@ -6,6 +6,8 @@ import axios from 'axios';
 import HouseListings from './HouseListings';
 import Paginations from './Paginations';
 import Map from './Map';
+import Controls from './Controls';
+import SearchBar from './SearchBar';
 
 const useStyles = makeStyles({
     section: {
@@ -35,6 +37,19 @@ export default function SearchHouseItems() {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [listingsPerPage] = useState(20);
+
+    const [map, setMap] = useState(false);
+    const [filterMenu, setFilterMenu] = useState(false);
+
+    const toggleMap = () => {
+        setMap(!map);
+        console.log('toggle map')
+    }
+
+    const toggleList = () => {
+        setFilterMenu(!filterMenu)
+        console.log('toggle list')
+    }
 
     const [page, setPage] = React.useState(1);
     const handleChange = (event, value) => {
@@ -101,6 +116,7 @@ export default function SearchHouseItems() {
     return (
         <Grid container disableGutters={true}>
             <Grid item xs={12} md={6}>
+                <SearchBar />
                 <HouseListings listings={currentListing} listing_id={listings[0]} loading={loading} />
                 <Paginations 
                     listingsPerPage={listingsPerPage} 
@@ -109,8 +125,13 @@ export default function SearchHouseItems() {
                 />
             </Grid>
             <Grid item xs={12} md={6}>
-                {/*<Map listings={listings}/>*/}
+                {/* setMap ?
+                    <Map listings={listings}/>
+                    :
+                    null
+                */}
             </Grid>
+            <Controls toggleMap={toggleMap} toggleList={toggleList} />
         </Grid>
     );
 }
