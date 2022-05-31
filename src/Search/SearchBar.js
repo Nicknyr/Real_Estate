@@ -16,9 +16,23 @@ import ButtonFilters from './ButtonFilters';
 
 const useStyles = makeStyles({
     searchContainer: {
-        //background: 'red',
         width: '100%',
-        marginBottom: '.5rem'
+        marginBottom: '.5rem',
+        display: 'flex',
+        flexDirection: 'column',
+        //borderBottom: '1px solid black',
+
+        [theme.breakpoints.up('md')]: {
+           flexDirection: 'row'
+        }
+    },
+    buttonContainer: {
+        margin: '.5rem 0',
+
+        [theme.breakpoints.up('md')]: {
+            paddingLeft: '.3rem',
+            margin: '0'
+         }
     },
     search: {
         position: 'relative',
@@ -35,6 +49,9 @@ const useStyles = makeStyles({
         [theme.breakpoints.up('sm')]: {
           marginLeft: theme.spacing(1),
           width: 'auto',
+        },
+        [theme.breakpoints.up('md')]: {
+            width: '50%'
         },
       },
       searchIcon: {
@@ -83,8 +100,10 @@ export default function SearchBar() {
                     inputProps={{ 'aria-label': 'search ' }}
                 />
                 </div>
+                <Box className={classes.buttonContainer}>
+                    <ButtonFilters />
+                </Box>
             </Box>
-            <ButtonFilters />
         </Grid>
     );  
 }

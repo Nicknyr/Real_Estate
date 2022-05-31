@@ -26,7 +26,7 @@ const useStyles = makeStyles({
     },
     address: {
         lineHeight: '1.5'
-    }
+    },
 });
 
 
@@ -115,8 +115,8 @@ export default function SearchHouseItems() {
     //console.log('listings : ' + listings);
     return (
         <Grid container disableGutters={true}>
+            <SearchBar />
             <Grid item xs={12} md={6}>
-                <SearchBar />
                 <HouseListings listings={currentListing} listing_id={listings[0]} loading={loading} />
                 <Paginations 
                     listingsPerPage={listingsPerPage} 
@@ -131,7 +131,10 @@ export default function SearchHouseItems() {
                     null
                 */}
             </Grid>
-            <Controls toggleMap={toggleMap} toggleList={toggleList} />
+            <Controls 
+                toggleMap={toggleMap} 
+                toggleList={toggleList}     
+            />
         </Grid>
     );
 }

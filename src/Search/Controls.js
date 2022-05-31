@@ -22,6 +22,10 @@ const useStyles = makeStyles({
         position: 'relative',
         zIndex: '100',
         //bottom: '20rem'
+        
+        [theme.breakpoints.up('md')]: {
+            display: 'none'
+         }
     },
     mapIcon: {
 

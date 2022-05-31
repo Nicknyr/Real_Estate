@@ -13,7 +13,11 @@ import Sale from '../assets/Sale.svg';
 
 const useStyles = makeStyles({
     section: {
-        margin: '5rem 0'
+        margin: '5rem 0',
+
+        [theme.breakpoints.up('md')]: {
+            height: '27rem',
+          }
     },
     feature: {
         padding: theme.spacing(5),
@@ -48,7 +52,11 @@ export default function Features() {
                         <Typography variant="body1" className={classes.body}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Id semper risus in hendrerit gravida rutrum.
                         </Typography>
-                        <Button variant="contained">Find a home</Button>
+                        <Button 
+                            variant="contained" 
+                            >
+                                Find a home
+                            </Button>
                     </Box>
                 </Grid>
                 <Grid item xs={12} sm={4} md={3} className={classes.feature}>

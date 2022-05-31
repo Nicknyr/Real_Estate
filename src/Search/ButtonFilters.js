@@ -11,6 +11,7 @@ import Popper from '@material-ui/core/Popper';
 import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import { makeStyles } from '@material-ui/core/styles';
+import theme from '../Theme';
 
 const useStyles = makeStyles({
     container: {
@@ -21,11 +22,19 @@ const useStyles = makeStyles({
         //justifyContent: 'space-between',
         marginTop: '.5rem',
         marginBottom: '1rem',
-        width: 'auto'
+        width: 'auto',
+
+        [theme.breakpoints.up('md')]: {
+           margin: '0 .3rem'
+        }
     },
     buttonContainer: {
         display: 'flex',
         justifyContent: 'space-between',
+
+        [theme.breakpoints.up('md')]: {
+           
+        }
     },
     button: {
         //width: '2rem !important'
